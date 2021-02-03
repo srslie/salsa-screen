@@ -14,15 +14,18 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="header">
+        <header>
           <button>Back</button>
           <h1>Salsa Screen</h1>
           <button>Forward</button>
-        </div>
-        <div className="searchBar">
-          <p>Will eventually be a searchBar here</p>
-        </div>
-        <Movies movies={this.state.movies} />
+        </header>
+        <form className="searchBar">
+          <input className="search" placeholder="🔍 Search..." />
+        </form>
+        <Movies className="movies" movies={this.state.movies} />
+        <footer>
+          <p>© srslie - 2021</p>
+        </footer>
       </div>
     )
   }
