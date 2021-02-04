@@ -4,7 +4,6 @@
   height: 100%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
   column-gap: 1vh;
   row-gap: 1vh;
   overflow: scroll;
