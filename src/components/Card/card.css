@@ -1,0 +1,17 @@
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.info {
+  height: 30%;
+  width: 100%
+}

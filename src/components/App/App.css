@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  opacity: 100%;
+  z-index: 10;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchBar {
+  position: fixed;
+  background-color: black;
+  color: white;
+  top: 10vh;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+  opacity: 100%;
+  z-index: 10;
+  background-color: white;
+}
