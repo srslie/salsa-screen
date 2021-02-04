@@ -3,7 +3,7 @@ import './card.css'
 
 const Card = ({id, poster_path, title, average_rating, release_date}) => {
   const convertDate = date => {
-    const dateSplit = release_date.split('-')
+    const dateSplit = date.split('-')
     const dateJoined =  dateSplit.join(',')
     const dateObject = new Date(dateJoined)
     const dateArray = dateObject.toDateString().split(' ')
