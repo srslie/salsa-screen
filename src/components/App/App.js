@@ -3,7 +3,7 @@ import './App.css'
 import movieData from '../../data/movieData'
 import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
-import apis from './apis'
+import apis from '../../apis'
 
 
 class App extends Component {
@@ -11,19 +11,36 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
+      searchResults: [],
       error: '',
-      loading: false
+      loading: true
     }
+  }
+
+  compileMovieData = (movies) => {
+    const compiledMovies = movies.map(movie => {
+      return Promise.all([apis.getSingleMovie(movie.id), apis.getTrailers(movie.id)])
+      .then(data => {
+        movie = data[0].movie
+        movie['videos'] = data[1].videos
+        return movie
+      })
+    })
+    return Promise.all(compiledMovies)
   }
 
   componentDidMount() {
     apis.getMovies()
       .then(data => {
-        this.setState({
-          movies: data.movies, 
-          loading: true})
+        return this.compileMovieData(data.movies)
       })
-      .catch(error => {
+      .then(compiledMovies => {
+        this.setState({
+          movies: compiledMovies, 
+          loading: false
+        })
+      })
+      .catch(() => {
         this.setState({
           error: 'Sorry we\'re having trouble loading themovies, have some chips!', 
         })
@@ -31,7 +48,7 @@ class App extends Component {
   }   
 
   showSearchResults = results => {
-    this.setState({movies: results})
+    this.setState({searchResults: results})
   }
 
   render = () => {
@@ -53,7 +70,7 @@ class App extends Component {
               <p>{this.state.error}</p>
             </div> 
         } 
-        <Movies className="movies" movies={this.state.movies} />
+        <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults}/>
         <footer>
           <p className="copyright">© srslie - 2021</p>
         </footer>
