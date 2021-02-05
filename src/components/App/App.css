@@ -59,14 +59,15 @@ footer {
 .copyright {
   padding-left: 5vh;
 }
-/* .errorLoading {
+.errorLoading {
   display: flex;
   justify-content: center;
   align-self: center;
   top: 40vh;
-  z-index: 10;
+  z-index: 100;
 }
 
 .loading {
   color: red;
-} */
+  z-index: 100;
+}
