@@ -18,12 +18,12 @@ const apis = {
   },
 
   //returns A user’s ratings for all movies: {"ratings": [{id: 1, user_id: 1, movie_id: 1, rating: 6, created_at: "someDate", updated_at: "someDate"},...]}
-  getUserRatings = userId => {
+  getUserRatings(userId) {
     this.getData(`/users/:${userId}/ratings`)
   },
 
   //returns 204 status code (NO CONTENT in response body)
-  deleteUserRating = (userId, ratingId) => {
+  deleteUserRating(userId, ratingId) {
     const settings = {
       method: 'DELETE',
       headers: {
@@ -37,7 +37,7 @@ const apis = {
   },
 
   //returns The rating that was successfully created: {rating: {user_id: 2, movie_id: 19, rating: 5}}
-  postUserRating = (userId, movieId, ratingOnetoTen) => {
+  postUserRating(userId, movieId, ratingOnetoTen) {
     const settings =  {
       method: 'POST',
       headers: {
@@ -54,7 +54,7 @@ const apis = {
   },
 
   //returns A user’s login session information: {user: {id: 1, name: "Alan", email: "alan@turing.io"}}
-  login = (email, password) => {
+  login(email, password) {
     const settings =  {
       method: 'POST',
       headers: {
