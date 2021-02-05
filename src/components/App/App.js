@@ -4,6 +4,7 @@ import movieData from '../../data/movieData'
 import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
 import apis from '../../apis'
+import SelectedMovie from '../SelectedMovie/SelectedMovie'
 
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
       movies: [],
       searchResults: [],
       error: '',
-      loading: true
+      loading: true,
+      selectedMovie: false
     }
   }
 
@@ -42,13 +44,21 @@ class App extends Component {
       })
       .catch(() => {
         this.setState({
-          error: 'Sorry we\'re having trouble loading themovies, have some chips!', 
+          error: 'Sorry we\'re having trouble loading the movies, have some chips!', 
         })
       })
   }   
 
   showSearchResults = results => {
     this.setState({searchResults: results})
+  }
+
+  showSelectedMovie = () => {
+    this.setState({selectedMovie: true})
+  }
+
+  displayAllMovies = () => {
+    this.setState({selectedMovie: false})
   }
 
   render = () => {
@@ -70,7 +80,10 @@ class App extends Component {
               <p>{this.state.error}</p>
             </div> 
         } 
-        <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults}/>
+        { this.selectedMovie
+          ? <SelectedMovie className="selectedMovie" displayAllMovies={this.displayAllMovies} />
+          : <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie}/>
+        }
         <footer>
           <p className="copyright">© srslie - 2021</p>
         </footer>
