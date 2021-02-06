@@ -1,23 +1,11 @@
 import React from 'react';
 import './card.css'
-import SelectedMovie from '../SelectedMovie/SelectedMovie'
 
-const Card = movie => {
-
-  const convertDate = date => {
-    const dateSplit = date.split('-')
-    const dateJoined =  dateSplit.join(',')
-    const dateObject = new Date(dateJoined)
-    const dateArray = dateObject.toDateString().split(' ')
-    const monthYear = [dateArray[1], dateArray[3]]
-    return monthYear.join(' ')
-  }
+const Card = (movie, showSelectedMovie, convertDate) => {
 
   const showMoreInfo = event => {
     event.preventDefault()
-    return (
-      <SelectedMovie movie={movie}/>
-    )
+    showSelectedMovie(movie)
   }
 
   return (
