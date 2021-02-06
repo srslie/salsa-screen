@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import movieData from '../../data/movieData'
 import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
 import apis from '../../apis'
@@ -15,7 +14,8 @@ class App extends Component {
       searchResults: [],
       error: '',
       loading: true,
-      selectedMovie: false
+      movieIsSelected: false, 
+      selectedMovie: null
     }
   }
 
@@ -53,12 +53,28 @@ class App extends Component {
     this.setState({searchResults: results})
   }
 
-  showSelectedMovie = () => {
-    this.setState({selectedMovie: true})
+  showSelectedMovie = movie => {
+    this.setState({
+      movieIsSelected: true, 
+      selectedMovie: movie
+    })
+    console.log('Clicked', this.state)
   }
 
   displayAllMovies = () => {
-    this.setState({selectedMovie: false})
+    this.setState({
+      movieIsSelected: false, 
+      selectedMovie: null
+    })
+  }
+
+  convertDate(date) {
+    const dateSplit = date.split('-')
+    const dateJoined =  dateSplit.join(',')
+    const dateObject = new Date(dateJoined)
+    const dateArray = dateObject.toDateString().split(' ')
+    const monthYear = [dateArray[1], dateArray[3]]
+    return monthYear.join(' ')
   }
 
   render = () => {
@@ -75,14 +91,16 @@ class App extends Component {
             <p>Loading...</p>
           </div> 
         }
-        { !this.state.movies.length && 
+        {!this.state.movies.length && 
             <div className="errorLoading">
               <p>{this.state.error}</p>
             </div> 
         } 
-        { this.selectedMovie
-          ? <SelectedMovie className="selectedMovie" displayAllMovies={this.displayAllMovies} />
-          : <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie}/>
+        {this.movieIsSelected &&
+          <SelectedMovie className="selectedMovie" movie={this.selectedMovie} displayAllMovies={this.displayAllMovies} convertDate={this.convertDate} />
+        }
+        {!this.movieIsSelected &&
+        <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} convertDate={this.convertDate}/>
         }
         <footer>
           <p className="copyright">© srslie - 2021</p>
