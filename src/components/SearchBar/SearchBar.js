@@ -13,13 +13,16 @@ class SearchBar extends Component {
     event.preventDefault()
     this.setState({searchInput: event.target.value.toLowerCase()})
 
-    const titleMatch = this.props.movies.filter(movie => {
-      const movieTitle = movie.title.toLowerCase()
-      return movieTitle.includes(event.target.value.toLowerCase())
-    })
-    // const descriptionMatch = this.movieList.filter(movie => movie.description.includes(this.searchInput))
-    // const searchResults = [...titleMatch, ...descriptionMatch]
-    // const results = titleMatch.length ? titleMatch : '<p>Sorry, no results matched your search.<p>'
+    const match = text => {
+      return this.props.movies.filter(movie => {
+        const textToLower = movie[text].toLowerCase()
+        return textToLower.includes(event.target.value.toLowerCase())
+      })
+    }
+    const titleMatch = match('title')
+    // const overviewMatch = match('overview')
+    // const searchResults = [...titleMatch, ...overviewMatch]
+    // const results = searchResults.length ? searchResults : '<p>Sorry, no results matched your search.<p>'
     this.props.showSearchResults(titleMatch)
   }
 
