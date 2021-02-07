@@ -5,7 +5,7 @@ const SelectedMovie = ({movie, displayAllMovies}) => {
     return (
       <div className="selectedMovie" style={{ 
         backgroundImage: `url(${movie.backdrop_path})` 
-      }}>
+      }} key={movie.id}>
         <button className="exit" onClick={displayAllMovies}>X</button>
         <img src={movie.poster_path} alt="movie poster"/>
         <div className="info">
