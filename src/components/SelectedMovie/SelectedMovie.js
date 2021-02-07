@@ -20,11 +20,11 @@ const SelectedMovie = ({movie, displayAllMovies, convertDate}) => {
               {movie.genres.map(genre => <li>genre</li>)}
             </ul>  
           </div>
-          <h3 className="budget">{movie.budget}</h3>
+          <h3 className="budget">{movie.budget.toLocaleString('EN-US', {style: 'currency', currency: 'USD' })}</h3>
           <h3 className="revenue">{movie.revenue}</h3>
           <h3 className="runtime">{movie.runtime}</h3>
           <div className="videos">
-            <h3>Genres:</h3>
+            <h3>Videos:</h3>
             <ul className="videosList">
               {movie.videos.map(video => {
                   return <p>video</p>
@@ -38,3 +38,4 @@ const SelectedMovie = ({movie, displayAllMovies, convertDate}) => {
 }
 
 export default SelectedMovie;
+
