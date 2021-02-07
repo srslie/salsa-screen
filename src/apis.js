@@ -1,7 +1,10 @@
 const apis = {
   getData(path) {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2${path}`)
-      .then(response => response.json())
+      .then(response => {
+        console.log('HTTP STATUS', response.status)
+        return response.json()
+      })
       .catch(error => console.log('API ERROR', error))
   },
 
@@ -14,7 +17,7 @@ const apis = {
   },
 
   getTrailers(id) {
-    return  this.getData(`/movies/${id}/videos`)
+    return this.getData(`/movies/${id}/videos`)
   },
 
   //returns A user’s ratings for all movies: {"ratings": [{id: 1, user_id: 1, movie_id: 1, rating: 6, created_at: "someDate", updated_at: "someDate"},...]}
