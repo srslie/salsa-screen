@@ -31,7 +31,7 @@ class App extends Component {
     return Promise.all(compiledMovies)
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     apis.getMovies()
       .then(data => {
         return this.compileMovieData(data.movies)
@@ -44,7 +44,7 @@ class App extends Component {
       })
       .catch(() => {
         this.setState({
-          error: 'Sorry we\'re having trouble loading the movies, have some chips!', 
+          error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
         })
       })
   }   
@@ -68,7 +68,8 @@ class App extends Component {
     })
   }
 
-  convertDate(date) {
+
+  convertDate = date => {
     const dateSplit = date.split('-')
     const dateJoined =  dateSplit.join(',')
     const dateObject = new Date(dateJoined)
@@ -92,15 +93,15 @@ class App extends Component {
           </div> 
         }
         {!this.state.movies.length && 
-            <div className="errorLoading">
-              <p>{this.state.error}</p>
-            </div> 
+          <div className="error">
+            <p>{this.state.error}</p>
+          </div> 
         } 
-        {this.movieIsSelected &&
-          <SelectedMovie className="selectedMovie" movie={this.selectedMovie} displayAllMovies={this.displayAllMovies} convertDate={this.convertDate} />
+        {this.state.movieIsSelected &&
+          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} convertDate={this.convertDate} />
         }
-        {!this.movieIsSelected &&
-        <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} convertDate={this.convertDate}/>
+        {!this.state.movieIsSelected &&
+          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} convertDate={this.convertDate}/>
         }
         <footer>
           <p className="copyright">© srslie - 2021</p>
