@@ -6,7 +6,6 @@
 
 main {
   display: grid;
-  /* grid-template-rows: 15% 5% 78% 2%; */
 }
 
 h1{
@@ -20,7 +19,8 @@ header {
   height: 10vh;
   opacity: 100%;
   z-index: 10;
-  background-color: white;
+  background-color:black;
+  color: white;
   display: grid;
   grid-template-columns: 10% 80% 10%;
 }
@@ -34,7 +34,7 @@ button {
 
 .searchBar {
   position: fixed;
-  background-color: black;
+  background-color:gray;
   color: white;
   top: 10vh;
   width: 100%;
@@ -59,14 +59,11 @@ footer {
 .copyright {
   padding-left: 5vh;
 }
-/* .errorLoading {
+.loading, error {
   display: flex;
   justify-content: center;
   align-self: center;
   top: 40vh;
-  z-index: 10;
+  z-index: 100;
+  padding-top: 40vh;
 }
-
-.loading {
-  color: red;
-} */

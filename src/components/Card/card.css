@@ -7,23 +7,27 @@
 }
 
 img {
-  height: 70%;
+  height: 60%;
   width: 90%;
 }
 
 .info {
-  height: 30%;
+  height: 40%;
   width: 100%
 }
 
 .title {
-  font-size: 3vh;
-}
-
-.date {
   font-size: 2vh;
 }
 
+.date {
+  font-size: 1vh;
+}
+
 .rating {
-  font-size: 3vh;
+  font-size: 2vh;
+}
+
+button {
+  padding: 0;
 }
