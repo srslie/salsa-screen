@@ -1,5 +1,6 @@
 import React from 'react';
-import './selectedMovie.css'
+import './selectedMovie.css';
+import Trailer from '../Trailer/Trailer'
 
 const SelectedMovie = ({movie, displayAllMovies}) => {
     return (
@@ -26,8 +27,8 @@ const SelectedMovie = ({movie, displayAllMovies}) => {
           <div className="videos">
             <h3>Videos:</h3>
             <ul className="videosList">
-              {console.log(movie.videos)}
-              {movie.videos.map(video => <p>{video.site} {video.type}</p>)}
+              {movie.videos.map(video => Trailer(video.key))
+            }
             </ul>  
           </div>
         </div>
