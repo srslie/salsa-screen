@@ -25,6 +25,12 @@ class App extends Component {
       .then(data => {
         movie = data[0].movie
         movie['videos'] = data[1].videos
+        movie.release_date = this.convertDate(movie.release_date)
+        movie.average_rating = movie.average_rating.toFixed(2)
+        movie.budget = this.formatCurrency(movie.budget)
+        movie.revenue = this.formatCurrency(movie.revenue)
+        movie.tagline = this.checkTextExistence(movie.tagline)
+        movie.overview = this.checkTextExistence(movie.overview)
         return movie
       })
     })
@@ -58,7 +64,6 @@ class App extends Component {
       movieIsSelected: true, 
       selectedMovie: movie
     })
-    console.log('Clicked', this.state)
   }
 
   displayAllMovies = () => {
@@ -68,7 +73,6 @@ class App extends Component {
     })
   }
 
-
   convertDate = date => {
     const dateSplit = date.split('-')
     const dateJoined =  dateSplit.join(',')
@@ -76,6 +80,16 @@ class App extends Component {
     const dateArray = dateObject.toDateString().split(' ')
     const monthYear = [dateArray[1], dateArray[3]]
     return monthYear.join(' ')
+  }
+
+  formatCurrency = number => {
+    return number 
+    ? number.toLocaleString('EN-US', {style: 'currency', currency: 'USD'}) 
+    : 'Data Not Available'
+  }
+
+  checkTextExistence = text => {
+    return text ? text : 'Data Not Available'
   }
 
   render = () => {
@@ -98,10 +112,10 @@ class App extends Component {
           </div> 
         } 
         {this.state.movieIsSelected &&
-          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} convertDate={this.convertDate} />
+          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
         }
         {!this.state.movieIsSelected &&
-          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} convertDate={this.convertDate}/>
+          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />
         }
         <footer>
           <p className="copyright">© srslie - 2021</p>
