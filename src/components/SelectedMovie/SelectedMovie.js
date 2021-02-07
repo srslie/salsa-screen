@@ -1,7 +1,7 @@
 import React from 'react';
 import './selectedMovie.css'
 
-const SelectedMovie = ({movie, displayAllMovies, convertDate}) => {
+const SelectedMovie = ({movie, displayAllMovies}) => {
     return (
       <div className="selectedMovie" style={{ 
         backgroundImage: `url(${movie.backdrop_path})` 
@@ -17,7 +17,7 @@ const SelectedMovie = ({movie, displayAllMovies, convertDate}) => {
           <div className="genres">
             <h3>Genres:</h3>
             <ul className="genresList">
-              {movie.genres.map(genre => <li>genre</li>)}
+              {movie.genres.map(genre => <li>{genre}</li>)}
             </ul>  
           </div>
           <h3 className="budget">Budget: {movie.budget}</h3>
@@ -26,10 +26,8 @@ const SelectedMovie = ({movie, displayAllMovies, convertDate}) => {
           <div className="videos">
             <h3>Videos:</h3>
             <ul className="videosList">
-              {movie.videos.map(video => {
-                  return <p>video</p>
-                })
-              }
+              {console.log(movie.videos)}
+              {movie.videos.map(video => <p>{video.site} {video.type}</p>)}
             </ul>  
           </div>
         </div>
