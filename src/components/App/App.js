@@ -40,6 +40,10 @@ class App extends Component {
   componentDidMount = () => {
     apis.getMovies()
       .then(data => {
+        this.setState({
+          movies: data.movies, 
+          loading: false
+        })
         return this.compileMovieData(data.movies)
       })
       .then(compiledMovies => {
