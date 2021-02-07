@@ -1,12 +1,9 @@
 .selectedMovie {
-  z-index: 1000;
   display: absolute;
   top: 20vh;
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  column-gap: 1vh;
-  row-gap: 1vh;
   overflow: scroll;
+  padding-top: 20vh;
 }
