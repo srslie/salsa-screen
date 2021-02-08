@@ -30,6 +30,8 @@ button {
   border: none;
   height: 70%;
   width: 80%;
+  background-color: black;
+  color: white;
 }
 
 footer {
