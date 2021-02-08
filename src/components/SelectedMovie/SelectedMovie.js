@@ -9,13 +9,15 @@ const SelectedMovie = ({movie, displayAllMovies}) => {
         backgroundImage: `url(${movie.backdrop_path})`
         }}>
           <div className="banner-info">
-            <div className="banner-info-text">
+            <div className="banner-info-title">
               <button className="exit" onClick={displayAllMovies}>X</button>
               <h1 className="title">{movie.title}</h1>
               {movie.tagline &&
-                <h3 className="tagline">{movie.tagline}</h3>
+                <p className="tagline">{movie.tagline}</p>
               }
-              <h2 className="rating">🌶 Spicyness: {movie.average_rating} 🌶</h2>
+            </div>
+            <div className="banner-info-rating">
+              <h2 className="rating">🌶 Spicyness: {movie.average_rating}</h2>
             </div>
           </div>
         </div>
