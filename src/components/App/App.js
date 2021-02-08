@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import './App.css'
 import Header from '../Header/Header'
 import Loading from '../Loading/Loading'
@@ -10,9 +10,6 @@ import SelectedMovie from '../SelectedMovie/SelectedMovie'
 import Footer from '../Footer/Footer'
 import apis from '../../apis'
 import utils from '../../utils'
-
-
-
 
 class App extends Component {
   constructor() {
@@ -106,24 +103,23 @@ class App extends Component {
 
   render = () => {
     return (
-    <Router> 
-      <main>
-        <Header />
-        {/* {!this.state.loading &&
-          <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
-        } */} 
-        <Switch>
-          <Route path="/loading" component={Loading} />
-          <Route path="/error" component={Error} />
+    <main> 
+      <Header />
+      {/* <SearchBar className="searchbar" movies={this.state.movies}showSearchResults={this.showSearchResults}/> */}
+  
+      <Switch>
+        <Route path="/loading" component={Loading} />
 
-          <Route path="/movie/::id" component={SelectedMovie} className="SelectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
+        <Route path="/error" component={Error} />
 
-          <Route path="/" exact component={Movies} 
-            render={() => <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />} />
-        </Switch>
-          <Footer />
-      </main>
-    </Router>
+        <Route path="/movie/::id" component={SelectedMovie}className="SelectedMovie" movie={this.state.selectedMovie}displayAllMovies={this.displayAllMovies} />
+
+        <Route path="/" exact component={Movies} 
+          render={() => {
+          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults}showSelectedMovie={this.showSelectedMovie} />} }/>
+      </Switch>
+      <Footer />
+    </main>
     )
   }
 }
