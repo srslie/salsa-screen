@@ -15,13 +15,15 @@ class SearchBar extends Component {
 
     const match = text => {
       return this.props.movies.filter(movie => {
-        return movie[text] &&
-        movie[text].toLowerCase().includes(event.target.value.toLowerCase())
+        return movie[text] ?
+          movie[text].toLowerCase().includes(event.target.value.toLowerCase())
+          : movie[text]
       })
     }
-    const searchResults = match('title')
-    // const overviewMatch = match('overview')
-    // const searchResults = [...titleMatch, ...overviewMatch]
+    const titleMatch = match('title')
+    const overviewMatch = match('overview')
+    const searchResults = [...titleMatch, ...overviewMatch]
+    console.log('searchresults', searchResults)
     // const results = searchResults.length ? searchResults : '<p>Sorry, no results matched your search.<p>'
     this.props.showSearchResults(searchResults)
   }
