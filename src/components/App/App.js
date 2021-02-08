@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css'
 import Header from '../Header/Header'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
-import apis from '../../apis'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
 import Footer from '../Footer/Footer'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import apis from '../../apis'
+import utils from '../../utils'
+
 
 
 
@@ -50,7 +52,7 @@ class App extends Component {
           movies: data.movies, 
           loading: false
         })
-        return this.compileMovieData(data.movies)
+        return utils.compileMovieData(data.movies)
       })
       .then(compiledMovies => {
         this.setState({
