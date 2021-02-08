@@ -15,7 +15,7 @@ const SelectedMovie = ({movie, displayAllMovies}) => {
               {movie.tagline &&
                 <h3 className="tagline">{movie.tagline}</h3>
               }
-              <h2 className="rating">Rating: {movie.average_rating}</h2>
+              <h2 className="rating">🌶 Spicyness: {movie.average_rating} 🌶</h2>
             </div>
           </div>
         </div>
