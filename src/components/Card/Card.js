@@ -9,7 +9,7 @@ const Card = (movie, showSelectedMovie) => {
       <div className="info">
         <h1 className="card-title">{movie.title}</h1>
         <h2 className="card-date">{movie.release_date}</h2>
-        <h2 className="card-rating">🌶 {movie.average_rating}🌶</h2>
+        <h2 className="card-rating">🌶 {movie.average_rating}</h2>
       </div>
     </div>
   )
