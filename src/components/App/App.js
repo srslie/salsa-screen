@@ -4,6 +4,7 @@ import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
 import apis from '../../apis'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
+import logo from '../../logo.svg'
 
 
 class App extends Component {
@@ -25,6 +26,12 @@ class App extends Component {
       .then(data => {
         movie = data[0].movie
         movie['videos'] = data[1].videos
+        movie.release_date = this.convertDate(movie.release_date)
+        movie.average_rating = movie.average_rating.toFixed(1)
+        movie.budget = this.formatCurrency(movie.budget)
+        movie.revenue = this.formatCurrency(movie.revenue)
+        movie.tagline = this.checkTextExistence(movie.tagline)
+        movie.overview = this.checkTextExistence(movie.overview)
         return movie
       })
     })
@@ -34,6 +41,10 @@ class App extends Component {
   componentDidMount = () => {
     apis.getMovies()
       .then(data => {
+        this.setState({
+          movies: data.movies, 
+          loading: false
+        })
         return this.compileMovieData(data.movies)
       })
       .then(compiledMovies => {
@@ -58,7 +69,6 @@ class App extends Component {
       movieIsSelected: true, 
       selectedMovie: movie
     })
-    console.log('Clicked', this.state)
   }
 
   displayAllMovies = () => {
@@ -67,7 +77,6 @@ class App extends Component {
       selectedMovie: null
     })
   }
-
 
   convertDate = date => {
     const dateSplit = date.split('-')
@@ -78,15 +87,27 @@ class App extends Component {
     return monthYear.join(' ')
   }
 
+  formatCurrency = number => {
+    return number 
+    ? number.toLocaleString('EN-US', {style: 'currency', currency: 'USD'}) 
+    : false
+  }
+
+  checkTextExistence = text => {
+    return text ? text : false
+  }
+
   render = () => {
     return (
       <main>
         <header>
-          <button>Back</button>
-          <h1>Salsa Screen</h1>
-          <button>Forward</button>
+          <button>{'<'}</button>
+          <h1>🌶 Salsa Screen 🎬</h1>
+          <button>{'>'}</button>
         </header>
-        <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
+        {!this.state.loading &&
+          <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
+        }
         {this.state.loading &&
           <div className="loading">
             <p>Loading...</p>
@@ -98,10 +119,10 @@ class App extends Component {
           </div> 
         } 
         {this.state.movieIsSelected &&
-          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} convertDate={this.convertDate} />
+          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
         }
         {!this.state.movieIsSelected &&
-          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} convertDate={this.convertDate}/>
+          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />
         }
         <footer>
           <p className="copyright">© srslie - 2021</p>

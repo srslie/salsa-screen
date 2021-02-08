@@ -30,18 +30,8 @@ button {
   border: none;
   height: 70%;
   width: 80%;
-}
-
-.searchBar {
-  position: fixed;
-  background-color:gray;
+  background-color: black;
   color: white;
-  top: 10vh;
-  width: 100%;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 footer {

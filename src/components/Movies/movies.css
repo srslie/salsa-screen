@@ -8,4 +8,6 @@
   row-gap: 1vh;
   overflow: scroll;
   padding-top: 20vh;
+  background-color: #151515;
+  color: white;
 }

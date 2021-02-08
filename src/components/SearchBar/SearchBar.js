@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './searchBar.css'
 
 class SearchBar extends Component {
   constructor() {
@@ -6,7 +7,6 @@ class SearchBar extends Component {
     this.state = {
       searchInput: ''
     }
-    
   }
 
   handleChange = event => {
@@ -15,15 +15,17 @@ class SearchBar extends Component {
 
     const match = text => {
       return this.props.movies.filter(movie => {
-        const textToLower = movie[text].toLowerCase()
-        return textToLower.includes(event.target.value.toLowerCase())
+        return movie[text] ?
+          movie[text].toLowerCase().includes(event.target.value.toLowerCase())
+          : movie[text]
       })
     }
     const titleMatch = match('title')
-    // const overviewMatch = match('overview')
-    // const searchResults = [...titleMatch, ...overviewMatch]
+    const overviewMatch = match('overview')
+    const searchResults = [...titleMatch, ...overviewMatch]
+    console.log('searchresults', searchResults)
     // const results = searchResults.length ? searchResults : '<p>Sorry, no results matched your search.<p>'
-    this.props.showSearchResults(titleMatch)
+    this.props.showSearchResults(searchResults)
   }
 
   render() {
