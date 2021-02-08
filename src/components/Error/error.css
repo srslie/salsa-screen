@@ -1,0 +1,8 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  top: 40vh;
+  z-index: 100;
+  padding-top: 40vh;
+}
