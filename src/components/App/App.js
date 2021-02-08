@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import './App.css'
+import Header from '../Header/Header'
+import Loading from '../Loading/Loading'
+import Error from '../Error/Error'
 import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
 import apis from '../../apis'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
-import logo from '../../logo.svg'
+import Footer from '../Footer/Footer'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 
 class App extends Component {
@@ -99,35 +104,24 @@ class App extends Component {
 
   render = () => {
     return (
+    <Router> 
       <main>
-        <header>
-          <button>{'<'}</button>
-          <h1>🌶 Salsa Screen 🎬</h1>
-          <button>{'>'}</button>
-        </header>
-        {!this.state.loading &&
+        <Header />
+        {/* {!this.state.loading &&
           <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
-        }
-        {this.state.loading &&
-          <div className="loading">
-            <p>Loading...</p>
-          </div> 
-        }
-        {!this.state.movies.length && 
-          <div className="error">
-            <p>{this.state.error}</p>
-          </div> 
-        } 
-        {this.state.movieIsSelected &&
-          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
-        }
-        {!this.state.movieIsSelected &&
-          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />
-        }
-        <footer>
-          <p className="copyright">© srslie - 2021</p>
-        </footer>
+        } */} 
+        <Switch>
+          <Route path="/loading" component={Loading} />
+          <Route path="/error" component={Error} />
+
+          <Route path="/movie/::id" component={SelectedMovie} className="SelectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
+
+          <Route path="/" exact component={Movies} 
+            render={() => <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />} />
+        </Switch>
+          <Footer />
       </main>
+    </Router>
     )
   }
 }
