@@ -4,6 +4,7 @@ import Movies from '../Movies/Movies'
 import SearchBar from '../SearchBar/SearchBar'
 import apis from '../../apis'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
+import logo from '../../logo.svg'
 
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
         movie = data[0].movie
         movie['videos'] = data[1].videos
         movie.release_date = this.convertDate(movie.release_date)
-        movie.average_rating = movie.average_rating.toFixed(2)
+        movie.average_rating = movie.average_rating.toFixed(1)
         movie.budget = this.formatCurrency(movie.budget)
         movie.revenue = this.formatCurrency(movie.revenue)
         movie.tagline = this.checkTextExistence(movie.tagline)
@@ -89,22 +90,24 @@ class App extends Component {
   formatCurrency = number => {
     return number 
     ? number.toLocaleString('EN-US', {style: 'currency', currency: 'USD'}) 
-    : 'Data Not Available'
+    : false
   }
 
   checkTextExistence = text => {
-    return text ? text : 'Data Not Available'
+    return text ? text : false
   }
 
   render = () => {
     return (
       <main>
         <header>
-          <button>Back</button>
-          <h1>Salsa Screen</h1>
-          <button>Forward</button>
+          <button>{'<'}</button>
+          <h1>🌶 Salsa Screen 🎬</h1>
+          <button>{'>'}</button>
         </header>
-        <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
+        {!this.state.loading &&
+          <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
+        }
         {this.state.loading &&
           <div className="loading">
             <p>Loading...</p>
