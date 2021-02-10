@@ -1,0 +1,9 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 40vh;
+  z-index: 100;
+  padding-top: 40vh;
+}
