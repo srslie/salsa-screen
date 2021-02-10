@@ -1,10 +1,10 @@
 import React from 'react';
 import './error.css'
 
-const Error = () => {
+const Error = ({error}) => {
   return (
     <div className="error">
-      <p>Error! Try Reloading.</p>
+      <p>{error}</p>
     </div> 
   )
 }
