@@ -3,9 +3,16 @@ const apis = {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2${path}`)
       .then(response => {
         console.log('HTTP STATUS', response.status)
+        if (!response.ok) {
+          console.error('API ERROR', response)
+          throw new Error('Oops')
+        }
         return response.json()
       })
-      .catch(error => console.log('API ERROR', error))
+      .catch(error => {
+        console.error('API ERROR', error)
+        throw new Error(error)
+      })
   },
 
   getMovies() {
