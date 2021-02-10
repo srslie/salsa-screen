@@ -1,20 +1,22 @@
 import React from 'react';
 import './selectedMovie.css';
-import Trailer from '../Trailer/Trailer'
+import Trailer from '../Trailer/Trailer';
+import {Link} from 'react-router-dom';
 
-const SelectedMovie = ({movie, displayAllMovies}) => {
+const SelectedMovie = ({movie}) => {
+  console.log('INSELECTED', movie)
     return (
-      <div className="selectedMovie" key={movie.id}>
+      <div className="selectedMovie">
         <div className="banner" style={{ 
         backgroundImage: `url(${movie.backdrop_path})`
         }}>
           <div className="banner-info">
             <div className="banner-info-title">
-              <button className="exit" onClick={displayAllMovies}>X</button>
+              <Link to={`/`} className="exit" >X</Link>
               <h1 className="title">{movie.title}</h1>
               {movie.tagline &&
                 <p className="tagline">{movie.tagline}</p>
-              }
+              } 
             </div>
             <div className="banner-info-rating">
               <h2 className="rating">🌶 Spicyness: {movie.average_rating}</h2>
@@ -30,7 +32,7 @@ const SelectedMovie = ({movie, displayAllMovies}) => {
             <div className="genres">
               <h3>Genres:</h3>
               <ul className="genresList">
-                {movie.genres.map(genre => <li>{genre}</li>)}
+                {movie.genres.map(genre => <li key={genre}>{genre}</li>)}
               </ul>  
             </div>
           }
