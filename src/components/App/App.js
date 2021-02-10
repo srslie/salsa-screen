@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css'
+import Header from '../Header/Header'
 import Movies from '../Movies/Movies'
+import Loading from '../Loading/Loading'
+import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
-import apis from '../../apis'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
-import logo from '../../logo.svg'
+import NotFound from '../NotFound/NotFound'
+import Footer from '../Footer/Footer'
+import apis from '../../apis'
+import utils from '../../utils'
 
 
 class App extends Component {
@@ -14,9 +20,7 @@ class App extends Component {
       movies: [],
       searchResults: [],
       error: '',
-      loading: true,
-      movieIsSelected: false, 
-      selectedMovie: null
+      loading: true
     }
   }
 
@@ -34,8 +38,24 @@ class App extends Component {
         movie.overview = this.checkTextExistence(movie.overview)
         return movie
       })
+
+      .catch(() => {
+        this.setState({
+          loading: true,
+          error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
+        })
+        throw new Error('Oops')
+      })
     })
     return Promise.all(compiledMovies)
+
+    .catch(() => {
+      this.setState({
+        loading: true,
+        error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
+      })
+      throw new Error('Oops')
+    })
   }
 
   componentDidMount = () => {
@@ -47,12 +67,14 @@ class App extends Component {
         })
         return this.compileMovieData(data.movies)
       })
+
       .then(compiledMovies => {
         this.setState({
           movies: compiledMovies, 
           loading: false
         })
       })
+
       .catch(() => {
         this.setState({
           error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
@@ -62,20 +84,6 @@ class App extends Component {
 
   showSearchResults = results => {
     this.setState({searchResults: results})
-  }
-
-  showSelectedMovie = movie => {
-    this.setState({
-      movieIsSelected: true, 
-      selectedMovie: movie
-    })
-  }
-
-  displayAllMovies = () => {
-    this.setState({
-      movieIsSelected: false, 
-      selectedMovie: null
-    })
   }
 
   convertDate = date => {
@@ -99,35 +107,73 @@ class App extends Component {
 
   render = () => {
     return (
-      <main>
-        <header>
-          <button>{'<'}</button>
-          <h1>🌶 Salsa Screen 🎬</h1>
-          <button>{'>'}</button>
-        </header>
-        {!this.state.loading &&
-          <SearchBar className="searchbar" movies={this.state.movies} showSearchResults={this.showSearchResults}/>
+    <main> 
+      <Header />
+      <Switch>
+        <Route exact path="/" 
+          render={() => (
+            <>
+              {this.state.loading && !this.state.error &&
+                <Loading />
+              }
+
+              {this.state.error && 
+                <Error error={this.state.error} />
+              } 
+
+              {!this.state.loading &&
+                <>
+                  <SearchBar 
+                    className="searchbar" 
+                    movies={this.state.movies} 
+                    showSearchResult={this.showSearchResults} 
+                  />
+                  <Movies 
+                    className="movies" 
+                    movies={this.state.movies} 
+                    searchResults={this.state.searchResults} 
+                    showSelectedMovie={this.showSelectedMovie} 
+                    showSearchResults={this.showSearchResults} 
+                    key={Date.now()}
+                  />
+                </>
+              }
+            </>
+          )}
+        />
+
+        {this.state.movies &&
+          <Route path="/movie/:id" 
+            render={({match}) => {
+              const movieId = match.url.split('/')[2]
+              const movieMatch = this.state.movies.find(movie => movie.id ===   parseInt(movieId))
+              if (movieMatch) {
+                return ( 
+                  <SelectedMovie 
+                    className="SelectedMovie" 
+                    movie={movieMatch} 
+                    displayAllMovies={this.displayAllMovies} 
+                    key={Date.now()} 
+                  />
+                )
+              } else {
+                return (
+                  <Error 
+                    error={'Sorry, having trouble loading this movie, please try navigating home and retrying'} 
+                  />
+                )
+              }
+            }} 
+          />
         }
-        {this.state.loading &&
-          <div className="loading">
-            <p>Loading...</p>
-          </div> 
-        }
-        {!this.state.movies.length && 
-          <div className="error">
-            <p>{this.state.error}</p>
-          </div> 
-        } 
-        {this.state.movieIsSelected &&
-          <SelectedMovie className="selectedMovie" movie={this.state.selectedMovie} displayAllMovies={this.displayAllMovies} />
-        }
-        {!this.state.movieIsSelected &&
-          <Movies className="movies" movies={this.state.movies} searchResults={this.state.searchResults} showSelectedMovie={this.showSelectedMovie} />
-        }
-        <footer>
-          <p className="copyright">© srslie - 2021</p>
-        </footer>
-      </main>
+
+        <Route path="/404" render={() => <NotFound />} />
+
+        <Redirect to="/404" />
+
+      </Switch>
+      <Footer />
+    </main>
     )
   }
 }
