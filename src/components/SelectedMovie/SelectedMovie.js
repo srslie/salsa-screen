@@ -4,7 +4,7 @@ import Trailer from '../Trailer/Trailer';
 import {Link} from 'react-router-dom';
 
 const SelectedMovie = ({movie}) => {
-  console.log('INSELECTED', movie)
+  // console.log('INSELECTED', movie)
     return (
       <div className="selectedMovie">
         <div className="banner" style={{ 
@@ -28,7 +28,7 @@ const SelectedMovie = ({movie}) => {
           {movie.overview &&
             <h3 className="overview">Overview: {movie.overview}</h3>
           }
-          {movie.genres.length &&
+          {movie.genres && movie.genres.length &&
             <div className="genres">
               <h3>Genres:</h3>
               <ul className="genresList">
@@ -43,7 +43,7 @@ const SelectedMovie = ({movie}) => {
               <h2 className="date">Released: {movie.release_date}</h2>
           }
         </div>
-        {(movie.budget && movie.revenue) &&
+        {movie.budget && movie.revenue &&
           <div className="money">
             {movie.budget &&
               <h3 className="budget">Budget: {movie.budget}</h3>
@@ -54,7 +54,7 @@ const SelectedMovie = ({movie}) => {
           </div>
         }
 
-        {movie.videos.length &&
+        {movie.videos && movie.videos.length &&
           <div className="trailers">
             <h3>Trailers & More:</h3>
               <div className="videosList">
