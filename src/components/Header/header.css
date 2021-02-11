@@ -8,5 +8,14 @@ header {
   background-color:black;
   color: white;
   display: grid;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 80% 20%;
+}
+
+.genreButton {
+  background-color: white;
+  z-index: 12;
+}
+.genreMenu {
+  background-color: red;
+  color:white;
 }
