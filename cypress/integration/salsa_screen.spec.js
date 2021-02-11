@@ -10,3 +10,16 @@ describe('Salsa Screen', () => {
       .get('h1').contains('Salsa Screen')
   });
 
+  it('should show a footer', () => {
+    cy
+      .get('footer').children('p')
+      .get('p').contains('© srslie - 2021')
+  });
+  
+  it('should show a loading page until movies data is loaded', () => {
+    cy.clock()
+    cy
+      .get('.loading').children('p')
+      .get('p').contains('Loading...')
+  });
+
