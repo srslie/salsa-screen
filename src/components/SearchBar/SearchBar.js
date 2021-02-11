@@ -31,7 +31,7 @@ class SearchBar extends Component {
   render() {
     return (
       <form className="searchBar">
-        <input className="search" value={this.state.searchInput} placeholder="🔍 Type to search..."  onChange={event => this.handleChange(event)} />
+        <input className="search" value={this.state.searchInput} type="text" placeholder="🔍 Type to search..."  onChange={event => this.handleChange(event)} />
       </form>
     )
   }
