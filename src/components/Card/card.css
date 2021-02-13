@@ -1,36 +1,57 @@
 .card {
-  height: 100%;
-  width: 100%;
+  flex: 0 0 auto;
+  height: auto;
+  width: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: baseline;
   background-color: #151515;
   text-align: center;
 }
 
-img {
-  height: 60%;
+.card:hover .hidden{
+  transform: scale(1.1, 1.1);
+  display: block;
+}
+
+.cardImg {
+  height: auto;
   width: 90%;
 }
 
-img:hover {
+.cardImg:hover {
   cursor: pointer;
-  transform: scale(1.5, 1.5);
+  transform: scale(1.1, 1.1);
+  z-index: 11;
 }
 
-.info {
-  height: 40%;
-  width: 100%
+.cardInfo {
+  position: relative;
+  z-index: 1;
+  width: 0; 
+  height: 0; 
+  border-left: 9vh solid transparent;
+  border-right: 9vh solid transparent;
+  border-top: 3vh solid #f2c72e;
+  opacity: 75%;
 }
 
-.card-title {
-  font-size: 2vh;
+.hidden {
+  display: none;
 }
 
-.card-date {
-  font-size: 1vh;
-}
 
 .card-rating {
   font-size: 2vh;
+  position: relative;
+  color: white;
+  z-index: 5;
+  margin: -1vh;
+  text-decoration: none;
+}
+
+.ratingOverlay {
+  position: relative;
+
 }
