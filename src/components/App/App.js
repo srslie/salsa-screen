@@ -31,7 +31,7 @@ class App extends Component {
         movie = data[0].movie
         movie['videos'] = data[1].videos
         movie.release_date = this.convertDate(movie.release_date)
-        movie.average_rating = movie.average_rating.toFixed(1)
+        movie.average_rating = movie.average_rating.toFixed(1) * 10
         movie.budget = this.formatCurrency(movie.budget)
         movie.revenue = this.formatCurrency(movie.revenue)
         movie.tagline = this.checkTextExistence(movie.tagline)
@@ -102,8 +102,10 @@ class App extends Component {
   }
 
   checkTextExistence = text => {
-    return text ? text : false
+    return text && typeof text === 'string' ? text : false
   }
+
+  check
 
   render = () => {
     return (
