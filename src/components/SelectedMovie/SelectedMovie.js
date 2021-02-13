@@ -2,24 +2,32 @@ import React from 'react';
 import './selectedMovie.css';
 import Trailer from '../Trailer/Trailer';
 import {Link} from 'react-router-dom';
+import ToolTip from '@material-ui/core/Tooltip';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const SelectedMovie = ({movie}) => {
   // console.log('INSELECTED', movie)
     return (
-      <div className="selectedMovie">
+      <div className="selectedMovie" key={movie.id}>
         <div className="banner" style={{ 
         backgroundImage: `url(${movie.backdrop_path})`
         }}>
           <div className="banner-info">
             <div className="banner-info-title">
-              <Link to={`/`} className="exit" >X</Link>
+            <Link to={`/`} className="exit" >
+              <ToolTip title="Exit Movie Details">
+                  <exit aria-label="delete">
+                    <CancelIcon />
+                  </exit>
+                </ToolTip>
+              </Link>
               <h1 className="title">{movie.title}</h1>
               {movie.tagline &&
                 <p className="tagline">{movie.tagline}</p>
               } 
             </div>
             <div className="banner-info-rating">
-              <h2 className="rating">🌶 Spicyness: {movie.average_rating}</h2>
+              <h2 className="rating">🌶 Spicyness: {movie.average_rating}%</h2>
             </div>
           </div>
         </div>
