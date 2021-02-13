@@ -1,0 +1,63 @@
+
+.moviesGenres {
+  top: 20vh;
+  overflow: hidden;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: repeat(16, 50vh);
+  row-gap: 5vh;
+  padding-top: 20vh;
+  background-color: #151515;
+  color: white;
+  padding: 20vh 5% 5% 5%;
+}
+
+.genre {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 90vw;
+}
+
+.genreName {
+  font-size: 1vh;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sliderCards {
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: scroll;
+  align-items: center;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.genreRow {
+  margin: 0;
+  padding: 0;
+  /* height: 20vh; */
+}
+
+.leftScroll, .rightScroll {
+  padding: 2vh 0 2vh 0;
+  display: flex;
+  align-self: center;
+  height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.6s ease;
+}
+
+.leftScroll:hover, .rightScroll:hover {
+  color: red;
+}
