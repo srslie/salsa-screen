@@ -1,0 +1,16 @@
+.featuredMovie {
+  display: absolute;
+  top: 15vh;
+  height: 40vh;
+  width: auto;
+  overflow: hidden;
+  background: linear-gradient(to bottom,#181818,transparent 50%);
+}
+
+.featuredBanner {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
