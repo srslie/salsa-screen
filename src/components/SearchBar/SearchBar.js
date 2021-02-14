@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './searchBar.css'
+import './searchBar.css';
+import TextField from '@material-ui/core/TextField';
 
 class SearchBar extends Component {
   constructor() {
@@ -30,8 +31,8 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form className="searchBar">
-        <input className="search" value={this.state.searchInput} placeholder="🔍 Type to search..."  onChange={event => this.handleChange(event)} />
+      <form className="searchBar" noValidate autoComplete="off">
+        <TextField id="search-input" label="search-input" variant="outlined" color="white" className="search-input" value={this.state.searchInput} placeholder="🔍 Type to search..." onChange={event => this.handleChange(event)} />
       </form>
     )
   }
