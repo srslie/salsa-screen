@@ -6,7 +6,6 @@ import ToolTip from '@material-ui/core/Tooltip';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 const SelectedMovie = ({movie}) => {
-  // console.log('INSELECTED', movie)
     return (
       <div className="selectedMovie" key={movie.id}>
         <div className="banner" style={{ 
