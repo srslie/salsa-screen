@@ -49,7 +49,7 @@ const DropDown = ({movies, showSearchResults, allGenres}) => {
     let classNames = event.currentTarget.className.split(' ')
     let genre = classNames[classNames.length-1]
     setAnchorEl(null);
-    const filteredMovies = movies.filter(movie => movie.genre === genre)
+    const filteredMovies = movies.filter(movie => movie.genres.includes(genre))
     showSearchResults(filteredMovies)
   };
 

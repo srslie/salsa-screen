@@ -4,8 +4,13 @@ import Trailer from '../Trailer/Trailer';
 import {Link} from 'react-router-dom';
 import ToolTip from '@material-ui/core/Tooltip';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Error from '../Error/Error';
 
-const SelectedMovie = ({movie}) => {
+const SelectedMovie = ({match, movies}) => {
+  const movieId = match.url.split('/')[2]
+  const movie = movies.find(movie => movie.id ===   parseInt(movieId))
+
+  if (movie) {
     return (
       <div className="selectedMovie" key={movie.id}>
         <div className="banner" style={{ 
@@ -15,9 +20,9 @@ const SelectedMovie = ({movie}) => {
             <div className="banner-info-title">
             <Link to={`/`} className="exit" >
               <ToolTip title="Exit Movie Details">
-                  <exit aria-label="delete">
+                  <div aria-label="exit">
                     <CancelIcon />
-                  </exit>
+                  </div>
                 </ToolTip>
               </Link>
               <h1 className="title">{movie.title}</h1>
@@ -72,6 +77,13 @@ const SelectedMovie = ({movie}) => {
         }
       </div>  
     )
+  } else {
+    return (
+      <Error 
+        error={'Sorry, having trouble loading this movipl try navigating home and retrying'} 
+      />
+    )
+  }
 }
 
 export default SelectedMovie;

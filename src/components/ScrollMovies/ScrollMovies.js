@@ -8,7 +8,6 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 const ScrollMovies = ({movies, allGenres}) => {
-  console.log('INSCROLLMOVIES', allGenres)
   const scroller = React.useRef()
 
   const scrollRight = () => {

@@ -17,25 +17,39 @@ const utils = {
   },
 
   checkTextExistence(text) {
-    return text ? text : false
+    return text && typeof text === 'string' ? text : false
   },
 
-  compileMovieData(movies) {
+  compileMovieData(movies, setState) {
     const compiledMovies = movies.map(movie => {
       return Promise.all([apis.getSingleMovie(movie.id), apis.getTrailers(movie.id)])
       .then(data => {
         movie = data[0].movie
         movie['videos'] = data[1].videos
         movie.release_date = this.convertDate(movie.release_date)
-        movie.average_rating = movie.average_rating.toFixed(1)
+        movie.average_rating = movie.average_rating.toFixed(1) * 10
         movie.budget = this.formatCurrency(movie.budget)
         movie.revenue = this.formatCurrency(movie.revenue)
         movie.tagline = this.checkTextExistence(movie.tagline)
         movie.overview = this.checkTextExistence(movie.overview)
         return movie
       })
+      .catch(() => {
+        setState({
+          loading: true,
+          error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
+        })
+        throw new Error('Oops')
+      })
     })
     return Promise.all(compiledMovies)
+      .catch(() => {
+      setState({
+        loading: true,
+        error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
+      })
+      throw new Error('Oops')
+    })
   },
 
   getAllGenres(movies) {
@@ -50,7 +64,6 @@ const utils = {
     return allGenres
   }
     
-
 }
 
 export default utils;

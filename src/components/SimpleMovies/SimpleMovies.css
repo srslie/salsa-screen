@@ -1,11 +1,11 @@
 .movies {
-  top: 20vh;
   width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   column-gap: 1vh;
-  row-gap: 1vh;
-  overflow: hidden;
+  row-gap: 3vh;
+  overflow: scroll;
   padding-top: 20vh;
   background-color: #151515;
   color: white;

@@ -6,6 +6,7 @@ import Movies from '../Movies/Movies'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
+import SimpleMovies from '../SimpleMovies/SimpleMovies'
 import NotFound from '../NotFound/NotFound'
 import Footer from '../Footer/Footer'
 import apis from '../../apis'
@@ -17,45 +18,11 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
+      allGenres: [],
       searchResults: [],
       error: '',
-      loading: true,
-      allGenres: []
+      loading: true  
     }
-  }
-
-  compileMovieData = (movies) => {
-    const compiledMovies = movies.map(movie => {
-      return Promise.all([apis.getSingleMovie(movie.id), apis.getTrailers(movie.id)])
-      .then(data => {
-        movie = data[0].movie
-        movie['videos'] = data[1].videos
-        movie.release_date = this.convertDate(movie.release_date)
-        movie.average_rating = movie.average_rating.toFixed(1) * 10
-        movie.budget = this.formatCurrency(movie.budget)
-        movie.revenue = this.formatCurrency(movie.revenue)
-        movie.tagline = this.checkTextExistence(movie.tagline)
-        movie.overview = this.checkTextExistence(movie.overview)
-        return movie
-      })
-
-      .catch(() => {
-        this.setState({
-          loading: true,
-          error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
-        })
-        throw new Error('Oops')
-      })
-    })
-    return Promise.all(compiledMovies)
-
-    .catch(() => {
-      this.setState({
-        loading: true,
-        error: 'Sorry we\'re having trouble loading the movies, have some chips and try reloading!', 
-      })
-      throw new Error('Oops')
-    })
   }
 
   componentDidMount = () => {
@@ -65,7 +32,7 @@ class App extends Component {
           movies: data.movies, 
           loading: false
         })
-        return this.compileMovieData(data.movies)
+        return utils.compileMovieData(data.movies, this.setState)
       })
 
       .then(compiledMovies => {
@@ -92,37 +59,33 @@ class App extends Component {
     } else if (typeof results === 'string') {
       this.setState({error: results}) 
     } else {
+      const uniqueResults = Array.from(new Set(results))
       this.setState({
         error: '',
-        searchResults: results})
+        searchResults: uniqueResults
+      })
     }
   }
 
-  convertDate = date => {
-    const dateSplit = date.split('-')
-    const dateJoined =  dateSplit.join(',')
-    const dateObject = new Date(dateJoined)
-    const dateArray = dateObject.toDateString().split(' ')
-    const monthYear = [dateArray[1], dateArray[3]]
-    return monthYear.join(' ')
+  showHome = () => {
+    this.setState({
+      searchResults: []
+    })
+    console.log('INSHOWHOME', this.state)
   }
-
-  formatCurrency = number => {
-    return number 
-    ? number.toLocaleString('EN-US', {style: 'currency', currency: 'USD'}) 
-    : false
-  }
-
-  checkTextExistence = text => {
-    return text && typeof text === 'string' ? text : false
-  }
-
  
   render = () => {
     return (
     <main> 
-      <Header movies={this.state.movies} showSearchResults={this.showSearchResults} allGenres={this.state.allGenres} />
+      <Header 
+        movies={this.state.movies}    
+        showSearchResults={this.showSearchResults} 
+        allGenres={this.state.allGenres}
+        showHome={this.showHome} 
+      />
+
       <Switch>
+        
         <Route exact path="/" 
           render={() => (
             <>
@@ -134,7 +97,10 @@ class App extends Component {
                 <Error error={this.state.error} />
               } 
 
-              {!this.state.loading && !this.state.error &&
+              {this.state.searchResults.length &&  
+              <Redirect to="/searchResults/" />}
+
+              {!this.state.loading && !this.state.error && 
                   <Movies 
                     className="movies" 
                     movies={this.state.movies} 
@@ -149,30 +115,29 @@ class App extends Component {
           )}
         />
 
-        {this.state.movies &&
+        {this.state.movies && !this.searchResults &&
           <Route path="/movie/:id" 
             render={({match}) => {
-              const movieId = match.url.split('/')[2]
-              const movieMatch = this.state.movies.find(movie => movie.id ===   parseInt(movieId))
-              if (movieMatch) {
                 return ( 
                   <SelectedMovie 
                     className="SelectedMovie" 
-                    movie={movieMatch} 
-                    displayAllMovies={this.displayAllMovies} 
+                    match={match} 
+                    movies={this.state.movies}
                     key={Date.now()} 
                   />
                 )
-              } else {
-                return (
-                  <Error 
-                    error={'Sorry, having trouble loading this movie, please try navigating home and retrying'} 
-                  />
-                )
               }
-            }} 
+            }
           />
         }
+
+      {this.state.movies && this.state.searchResults.length &&
+          <Route path="/searchResults"
+            render={() => { 
+              return (<SimpleMovies movies={this.state.searchResults} />)
+            } 
+        } />
+      }
 
         <Route path="/404" render={() => <NotFound />} />
 

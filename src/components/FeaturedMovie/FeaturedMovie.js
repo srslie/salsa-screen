@@ -7,7 +7,6 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import {Link} from 'react-router-dom'
 
 const FeaturedMovie = ({movie}) => {
-  console.log('INSELECTED', movie)
   return (
     <div className="featured-movie" >
 

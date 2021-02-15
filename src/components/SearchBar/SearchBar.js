@@ -34,7 +34,7 @@ class SearchBar extends Component {
     return (
       <form className="search-bar" noValidate autoComplete="off">
         <SearchIcon />
-        <TextField id="search-input" label="search-input" variant="filled" color="white" className="search-input" value={this.state.searchInput} placeholder="Type to search..." onChange={event => this.handleChange(event)} />
+        <TextField id="search-input" label="Title, overview..." variant="filled" color="white" className="search-input" value={this.state.searchInput} placeholder="Type to search..." onChange={event => this.handleChange(event)} />
       </form>
     )
   }
