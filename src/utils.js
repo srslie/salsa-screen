@@ -36,7 +36,20 @@ const utils = {
       })
     })
     return Promise.all(compiledMovies)
+  },
+
+  getAllGenres(movies) {
+    let allGenres = []
+    movies.forEach(movie => {
+      movie.genres.forEach(genre => {
+        if (!allGenres.includes(genre)) {
+          allGenres.push(genre)
+        }
+      })
+    })
+    return allGenres
   }
+    
 
 }
 
