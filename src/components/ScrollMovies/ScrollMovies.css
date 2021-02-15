@@ -1,6 +1,9 @@
+.scroll-movies{
+  display: grid;
+  grid-template-rows: 45vh auto;
+}
 
-.moviesGenres {
-  top: 20vh;
+.movies-genres {
   overflow: hidden;
   width: 100vw;
   display: grid;
@@ -9,7 +12,7 @@
   padding-top: 20vh;
   background-color: #151515;
   color: white;
-  padding: 20vh 5% 5% 5%;
+  padding: 1% 5% 5% 5%;
 }
 
 .genre {
@@ -19,8 +22,8 @@
   width: 90vw;
 }
 
-.genreName {
-  font-size: 1vh;
+.genre-name {
+  font-size: 2vw;
 }
 
 .slider {
@@ -29,7 +32,7 @@
   align-items: center;
 }
 
-.sliderCards {
+.slider-cards {
   justify-content: center;
   position: relative;
   margin: 0;
@@ -38,14 +41,13 @@
   overflow: scroll;
   align-items: center;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
+  /* -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; */
 }
 
-.genreRow {
+.genre-row {
   margin: 0;
   padding: 0;
-  /* height: 20vh; */
 }
 
 .leftScroll, .rightScroll {

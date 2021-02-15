@@ -7,7 +7,8 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 
-const ScrollMovies = ({movies}) => {
+const ScrollMovies = ({movies, allGenres}) => {
+  console.log('INSCROLLMOVIES', allGenres)
   const scroller = React.useRef()
 
   const scrollRight = () => {
@@ -18,52 +19,50 @@ const ScrollMovies = ({movies}) => {
     scroller.current.scrollLeft -= 200
   }
 
-  let allGenres = []
-  movies.forEach(movie => {
-    movie.genres.forEach(genre => {
-      if (!allGenres.includes(genre)) {
-        allGenres.push(genre)
-      }
-    })
-  })
+  const randomMovie = () => {
+    const randomIndex = Math.floor(Math.random() * Math.floor(movies.length))
+    return movies[randomIndex]
+  }
 
   return (
-    <div className="moviesGenres">
-      <FeaturedMovie movie={movies[2]} />
-    {allGenres.map(genre => {
+    <div className="scroll-movies">
+    <FeaturedMovie movie={randomMovie()} />
+    <div className="movies-genres">
+      {allGenres.map(genre => {
       return (
-        <wrapper className="genreRow">
+        <div className="genre-row">
           <div className= "genre">
-            <h2 className="genreName">{`${genre}`}</h2>
-            <wrapper className="slider">
+            <h2 className="genre-name">{`${genre}`}</h2>
+            <div className="slider">
               <span 
                 class="leftScroll"  
-                tabindex="0" 
+                tabIndex="0" 
                 role="button"   
                 aria-label="See previous titles"
                 onClick={scrollLeft}
               >
                 <ArrowBackIosIcon />
               </span>
-                <wrapper className="sliderCards" ref={scroller}>
+                <div className="slider-cards" ref={scroller}>
                   {movies
                     .filter(movie => movie.genres.includes(genre))
                     .map(movie => <Card movie={movie} />)
                   }
-                </wrapper>
+                </div>
               <span 
                 class="rightScroll"  
-                tabindex="0" role="button"   
+                tabIndex="0" role="button"   
                 aria-label="See previous titles" 
                 onClick={scrollRight}
               >
                 <ArrowForwardIosIcon />
               </span>
-            </wrapper>
+            </div>
           </div>
-        </wrapper>
+        </div>
       )
     })}
+    </div>
     </div>
   )
 } 
