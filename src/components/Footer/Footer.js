@@ -45,7 +45,7 @@ function Footer() {
         </ToolTip>
 
         <ToolTip title="Portfolio Website" arrow>
-           <Link
+          <Link
             color="inherit"
             href="https://www.srslie.com/"
             className='iconLink'
