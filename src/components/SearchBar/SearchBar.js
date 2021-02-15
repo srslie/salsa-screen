@@ -3,7 +3,7 @@ import './searchBar.css';
 import TextField from '@material-ui/core/TextField';
 
 class SearchBar extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       searchInput: ''
@@ -24,9 +24,8 @@ class SearchBar extends Component {
     const titleMatch = match('title')
     const overviewMatch = match('overview')
     const searchResults = [...titleMatch, ...overviewMatch]
-    console.log('searchresults', searchResults)
-    // const results = searchResults.length ? searchResults : '<p>Sorry, no results matched your search.<p>'
-    this.props.showSearchResults(searchResults)
+    const results = searchResults.length ? searchResults : 'Sorry, no results matched your search.'
+    this.props.showSearchResults(results)
   }
 
   render() {

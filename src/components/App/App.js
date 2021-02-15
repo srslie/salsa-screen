@@ -5,7 +5,6 @@ import Header from '../Header/Header'
 import Movies from '../Movies/Movies'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
-import SearchBar from '../SearchBar/SearchBar'
 import SelectedMovie from '../SelectedMovie/SelectedMovie'
 import NotFound from '../NotFound/NotFound'
 import Footer from '../Footer/Footer'
@@ -20,7 +19,8 @@ class App extends Component {
       movies: [],
       searchResults: [],
       error: '',
-      loading: true
+      loading: true,
+      allGenres: []
     }
   }
 
@@ -71,7 +71,8 @@ class App extends Component {
       .then(compiledMovies => {
         this.setState({
           movies: compiledMovies, 
-          loading: false
+          loading: false,
+          allGenres: utils.getAllGenres(compiledMovies)
         })
       })
 
@@ -83,7 +84,13 @@ class App extends Component {
   }   
 
   showSearchResults = results => {
-    this.setState({searchResults: results})
+    if (typeof results === 'string') {
+      this.setState({error: results}) 
+    } else {
+      this.setState({
+        error: '',
+        searchResults: results})
+    }
   }
 
   convertDate = date => {
@@ -105,12 +112,11 @@ class App extends Component {
     return text && typeof text === 'string' ? text : false
   }
 
-  check
-
+ 
   render = () => {
     return (
     <main> 
-      <Header />
+      <Header movies={this.state.movies} showSearchResults={this.showSearchResults} allGenres={this.state.allGenres} />
       <Switch>
         <Route exact path="/" 
           render={() => (
@@ -123,13 +129,7 @@ class App extends Component {
                 <Error error={this.state.error} />
               } 
 
-              {!this.state.loading &&
-                <>
-                  <SearchBar 
-                    className="searchbar" 
-                    movies={this.state.movies} 
-                    showSearchResult={this.showSearchResults} 
-                  />
+              {!this.state.loading && !this.state.error &&
                   <Movies 
                     className="movies" 
                     movies={this.state.movies} 
@@ -137,8 +137,8 @@ class App extends Component {
                     showSelectedMovie={this.showSelectedMovie} 
                     showSearchResults={this.showSearchResults} 
                     key={Date.now()}
+                    allGenres={this.state.allGenres}
                   />
-                </>
               }
             </>
           )}
