@@ -11,22 +11,8 @@ header {
   grid-template-columns: 60% 20% 20%;
 }
 
-.genre-button {
-  color: white;
-  z-index: 12;
-}
-
-.genre-menu {
-  color:white;
-}
-
 .siteName {
   height: auto;
   width: 30%;
 }
 
-.menu-wrapper {
-  z-index: 1000;
-  background-color: white;
-
-}

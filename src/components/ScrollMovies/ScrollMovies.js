@@ -35,7 +35,7 @@ const ScrollMovies = ({movies, allGenres}) => {
             <h2 className="genre-name">{`${genre}`}</h2>
             <div className="slider">
               <span 
-                class="leftScroll"  
+                className="leftScroll"  
                 tabIndex="0" 
                 role="button"   
                 aria-label="See previous titles"
@@ -50,7 +50,7 @@ const ScrollMovies = ({movies, allGenres}) => {
                   }
                 </div>
               <span 
-                class="rightScroll"  
+                className="rightScroll"  
                 tabIndex="0" role="button"   
                 aria-label="See previous titles" 
                 onClick={scrollRight}
