@@ -1,7 +1,7 @@
 .card {
   flex: 0 0 auto;
   height: auto;
-  width: 30vh;
+  width: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,13 +17,19 @@
 
 .cardImg {
   height: auto;
+  z-index: 2;
   width: 90%;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 3px -3px 4px black;
+  -moz-box-shadow: 2px 2px 3px 4px black;  
+  box-shadow: 0 0 36px 10px rgb(0 0 0 / 30%);
 }
 
 .cardImg:hover {
   cursor: pointer;
   transform: scale(1.1, 1.1);
   z-index: 11;
+  border-radius: 4px;
 }
 
 .cardInfo {
@@ -35,20 +41,21 @@
   border-right: 9vh solid transparent;
   border-top: 3vh solid #f2c72e;
   opacity: 75%;
+  margin: 3vh;
 }
 
 .hidden {
   display: none;
 }
 
-
 .card-rating {
   font-size: 2vh;
   position: relative;
   color: white;
   z-index: 5;
-  margin: -1vh;
+  margin: -3vh;
   text-decoration: none;
+  font-size: 2vw;
 }
 
 .ratingOverlay {

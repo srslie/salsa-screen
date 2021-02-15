@@ -17,7 +17,7 @@ const Card = ({movie}) => {
         />
         <div className="cardInfo hidden">
           <span className="ratingOverlay">
-            <h2 className="crd-rating">🌶 {movie.average_rating}%</h2>
+            <h2 className="card-rating">🌶 {movie.average_rating}%</h2>
           </span>
         </div>
       </div>
