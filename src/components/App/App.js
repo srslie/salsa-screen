@@ -84,7 +84,12 @@ class App extends Component {
   }   
 
   showSearchResults = results => {
-    if (typeof results === 'string') {
+    if (!results) {
+      this.setState({
+        error: '',
+        searchResults: null
+      })
+    } else if (typeof results === 'string') {
       this.setState({error: results}) 
     } else {
       this.setState({

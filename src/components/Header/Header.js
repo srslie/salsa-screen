@@ -41,15 +41,17 @@ const StyledMenuItem = withStyles((theme) => ({
 
 const Header = ({movies, showSearchResults, allGenres}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl); 
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = event => {
+    let classNames = event.currentTarget.className.split(' ')
+    let genre = classNames[classNames.length-1]
     setAnchorEl(null);
-    showSearchResults()
+    const filteredMovies = movies.filter(movie => movie.genre === genre)
+    showSearchResults(filteredMovies)
   };
 
   return (
@@ -79,7 +81,7 @@ const Header = ({movies, showSearchResults, allGenres}) => {
       
         {allGenres.map(genre => {
           return (
-          <StyledMenuItem 
+          <StyledMenuItem className={genre}
             onClick={handleClose}
           >
             {genre}
@@ -92,11 +94,13 @@ const Header = ({movies, showSearchResults, allGenres}) => {
 
 
       {movies &&
+      
       <SearchBar 
         className="searchbar" 
         movies={movies} 
         showSearchResults={showSearchResults} 
-      />
+      />  
+
       }
     </header>
     </>

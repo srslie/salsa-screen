@@ -8,16 +8,16 @@ header {
   background-image: linear-gradient(black, #151515);
   color: white;
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 60% 20% 20%;
 }
 
 .genre-button {
   color: white;
   z-index: 12;
 }
+
 .genre-menu {
   color:white;
-
 }
 
 .siteName {
