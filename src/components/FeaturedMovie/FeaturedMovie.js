@@ -6,6 +6,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import {Link} from 'react-router-dom';
 import InfoIcon from '@material-ui/icons/Info';
+import utils from '../../utils'
 
 const FeaturedMovie = ({movie}) => {
   return (
@@ -25,7 +26,7 @@ const FeaturedMovie = ({movie}) => {
           </p>
         } 
           <h2 className="featured-rating">
-            Spicyness:  🌶 {movie.average_rating}%
+            {utils.addSpiceRating(movie.average_rating)}
           </h2>  
       
       {movie.genres && movie.genres.length &&

@@ -25,8 +25,8 @@
   overflow-y: visible;
   align-items: center;
   scroll-behavior: smooth;
-  /* -webkit-overflow-scrolling: touch;
-  touch-action: pan-y; */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 .genre-row {

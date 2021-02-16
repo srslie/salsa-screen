@@ -62,6 +62,17 @@ const utils = {
       })
     })
     return allGenres
+  },
+
+  addSpiceRating(rating) {
+    const percentSpice =  `: 🌶 ${rating}%`
+    if (rating <=40) {
+      return `Mild${percentSpice}`
+    } else if (rating <= 70) {
+      return `Medium-Hot${percentSpice}`
+    } else {
+      return `Hot${percentSpice}`
+    }
   }
     
 }

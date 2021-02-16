@@ -4,7 +4,6 @@
 }
 
 .movies-genres {
-  overflow: hidden;
   width: 100vw;
   display: grid;
   grid-template-rows: repeat(16, 50vh);

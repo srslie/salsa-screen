@@ -16,29 +16,25 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   z-index: 2;
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    opacity: 1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  opacity: 1;
 }
 
 .featured-info {
-  position: relative;
-  margin-top: -50vh;
+  position: absolute;
+  margin-top: -47vh;
   height: 45vh;
   width: 100%;
-  background: linear-gradient(to top,black,transparent 20%);
+  background: linear-gradient(to top, black, transparent 50%);
   color: white;
   display: grid;
   grid-template-rows: 60% 40%;
-  padding-left: 5vw;
-  padding-right: 5vw;
 }
 
 .featured-info-wrap {
-  bottom: 5vw;
   color: white;
   display: flex;
   flex-direction: column;
@@ -63,17 +59,20 @@
 
 .more:hover {
   cursor: pointer;
-  transform: scale(2, 2)
+  border: 1px solid red;
+  opacity: 1;
 }
 
 .featured-title, .featured-tagline, .featured-rating, .featured-genres-list {
-  padding: 0;
+  padding-left: 5vh;
   z-index: 3;
   margin: 0;
 }
 
 .featured-title {
-  font-size: 4vw;
+  font-size: 5vw;
+  font-family: 'Bebas Neue', cursive;
+  text-shadow: 1px 1px 2px black;
 }
 
 .featured-tagline: {
@@ -81,11 +80,18 @@
 }
 
 .featured-rating {
-  font-size: 2vw;
+  font-size: 3vw;
+  padding-top: 1vh;
+  font-family: 'Bebas Neue', cursive;
+  text-shadow: 1px 1px 2px black;
 }
 
 .featured-genre {
   color: white;
+}
+
+.more {
+  margin-left: 5vh;
 }
 
 .more-text {

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import ToolTip from '@material-ui/core/Tooltip';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Error from '../Error/Error';
+import utils from '../../utils'
 
 
 const SelectedMovie = ({match, movies}) => {
@@ -30,7 +31,9 @@ const SelectedMovie = ({match, movies}) => {
               } 
             </div>
             <div className="banner-info-rating">
-              <h2 className="rating">Spicyness: 🌶 {movie.average_rating}%</h2>
+              <h2 className="rating">
+                {utils.addSpiceRating(movie.average_rating)}
+              </h2>
             </div>
           </div>
         </div>
