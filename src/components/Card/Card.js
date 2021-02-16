@@ -6,7 +6,7 @@ import ToolTip from '@material-ui/core/Tooltip';
 const Card = ({movie}) => {
   return (
     <ToolTip title={`Click for details about ${movie.title} 🎥 `}arrow>
-    <Link to={`/movie/${movie.id}`}>
+    <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
       <div className="card" 
         id={movie.id} 
         key={movie.id}

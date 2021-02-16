@@ -53,9 +53,7 @@ const FeaturedMovie = ({movie}) => {
       </Link>
       </div>
       </div>
-      <div className="fill">
-        <p>;)</p>
-      </div>
+     
     </div>  
 
     

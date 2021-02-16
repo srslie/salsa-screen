@@ -30,15 +30,19 @@ const SelectedMovie = ({match, movies}) => {
               } 
             </div>
             <div className="banner-info-rating">
-              <h2 className="rating">🌶 Spicyness: {movie.average_rating}%</h2>
+              <h2 className="rating">Spicyness: 🌶 {movie.average_rating}%</h2>
             </div>
           </div>
         </div>
 
         <div className="info">
           {movie.overview &&
-            <h3 className="overview">Overview: {movie.overview}</h3>
+            <div className="overview-wrapper">
+              <h3 className="overview">Overview:</h3> 
+              <p>{movie.overview}</p>
+            </div>
           }
+          <div className="info-wrapper">
           {movie.genres && movie.genres.length &&
             <div className="genres">
               <h3>Genres:</h3>
@@ -64,7 +68,7 @@ const SelectedMovie = ({match, movies}) => {
             }
           </div>
         }
-
+        </div>
         {movie.videos && movie.videos.length &&
           <div className="trailers">
             <h3>Trailers & More:</h3>

@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: baseline;
   background-color: #151515;
   text-align: center;
+  text-decoration: none;
 }
 
 .card:hover .hidden{
@@ -60,5 +60,4 @@
 
 .ratingOverlay {
   position: relative;
-
 }

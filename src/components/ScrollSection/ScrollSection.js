@@ -1,4 +1,5 @@
 import React from 'react';
+import './ScrollSection.css'
 import Card from '../Card/Card'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -8,11 +9,11 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
   const scroller = React.useRef()
 
   const scrollRight = () => {
-    scroller.current.scrollLeft += 600
+    scroller.current.scrollLeft += 1000
   }
 
   const scrollLeft = () => {
-    scroller.current.scrollLeft -= 600
+    scroller.current.scrollLeft -= 1000
   }
   
   return (

@@ -16,6 +16,12 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   z-index: 2;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    opacity: 1;
 }
 
 .featured-info {
@@ -23,7 +29,7 @@
   margin-top: -50vh;
   height: 45vh;
   width: 100%;
-  background: linear-gradient(to top,#181818,transparent 20%);
+  background: linear-gradient(to top,black,transparent 20%);
   color: white;
   display: grid;
   grid-template-rows: 60% 40%;
@@ -70,6 +76,10 @@
   font-size: 4vw;
 }
 
+.featured-tagline: {
+  font-size: 3vw;
+}
+
 .featured-rating {
   font-size: 2vw;
 }
@@ -82,6 +92,20 @@
   padding: 0;
   margin: 0;
 }
+
 .fill {
   background: linear-gradient(to top,#181818,transparent 50%);
+  display: none;
 }
+
+/* @media screen and (min-width: 800px) {
+  .featured-backdrop {
+    background-size: 100% 60vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .featured-backdrop {
+    background-size: 100vw auto;
+  }
+} */
