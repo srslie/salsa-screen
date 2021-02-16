@@ -6,17 +6,16 @@
 
 main {
   display: grid;
+  /* grid-template-rows: 5vh auto 5vh; */
 }
 
-h1{
+h1 {
   font-size: 5vh;
 }
 
-button {
-  display: block;
-  border: none;
-  height: 70%;
-  width: 80%;
-  background-color: black;
-  color: white;
+@media screen and (max-width: 800px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
 }
