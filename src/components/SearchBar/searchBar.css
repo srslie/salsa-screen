@@ -1,11 +1,11 @@
-.searchBar {
-  position: fixed;
-  background-color: #090909;
+.search-bar {
   color: white;
-  top: 10vh;
   width: 100%;
-  height: 5vh;
+  align-items: baseline;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  height: fit-content;
+}
+
+.search-input {
+  background-color: white;
 }

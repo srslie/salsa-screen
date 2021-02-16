@@ -1,14 +1,17 @@
 import React from 'react';
-import './movies.css'
-import Card from '../Card/Card'
+import SimpleMovies from '../SimpleMovies/SimpleMovies';
+import ScrollMovies from '../ScrollMovies/ScrollMovies';
 
-const Movies = ({movies, searchResults}) => {
-  const moviesToDisplay = searchResults.length ? searchResults : movies
-  return (
-      <div className="movies">
-        {moviesToDisplay.map(movie => <Card movie={movie} />)}
-      </div>
-  )
+const Movies = ({movies, searchResults, allGenres}) => {
+   if (movies[0].genres) {
+    return (
+      <ScrollMovies movies={movies} allGenres={allGenres} />
+    )
+  } else {
+    return (
+      <SimpleMovies movies={movies} />
+    )
+  }
 }
 
 export default Movies;

@@ -1,0 +1,27 @@
+.movies {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  column-gap: 1vh;
+  row-gap: 3vh;
+  overflow: scroll;
+  padding-top: 20vh;
+  background-color: #151515;
+  color: white;
+  padding: 20vh 5% 5% 5%;
+}
+
+@media screen and (max-width: 800px) {
+  .movies {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .movies {
+    display: grid;
+    grid-template-columns: repeat(6, 15%) ;
+  }
+}

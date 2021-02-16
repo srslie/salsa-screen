@@ -1,5 +1,6 @@
 .error {
   display: flex;
+  flex-direaction: column;
   justify-content: center;
   align-self: center;
   top: 40vh;

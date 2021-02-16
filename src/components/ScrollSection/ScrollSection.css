@@ -1,0 +1,49 @@
+.genre {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 90vw;
+}
+
+.genre-name {
+  font-size: 2vw;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.slider-cards {
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: visible;
+  align-items: center;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.genre-row {
+  margin: 0;
+  padding: 0;
+}
+
+.leftScroll, .rightScroll {
+  padding: 2vh 0 2vh 0;
+  display: flex;
+  align-self: center;
+  height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.6s ease;
+}
+
+.leftScroll:hover, .rightScroll:hover {
+  color: red;
+}
