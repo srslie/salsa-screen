@@ -38,7 +38,6 @@ class SearchBar extends Component {
           id="search-input" 
           label="Title, overview..." 
           variant="filled" 
-          color="white" 
           className="search-input"
           value={this.state.searchInput} 
           placeholder="Type to search..." 

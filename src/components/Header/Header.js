@@ -5,7 +5,6 @@ import SearchBar from '../SearchBar/SearchBar'
 import DropDown from '../DropDown/DropDown'
 
 const Header = ({movies, showSearchResults, allGenres, showHome}) => {
-  console.log('INHEADER', showHome)
   return (
     <>
     <header>

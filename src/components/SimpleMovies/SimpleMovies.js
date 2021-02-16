@@ -5,7 +5,7 @@ import Card from '../Card/Card'
 const SimpleMovies = ({movies}) => {
   return (
       <div className="movies">
-        {movies.map(movie => <Card movie={movie} />)}
+        {movies.map(movie => <Card movie={movie} key={`${movie.id}-card`} />)}
       </div>
       )
 }

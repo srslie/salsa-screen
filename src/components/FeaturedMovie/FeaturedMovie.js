@@ -32,10 +32,12 @@ const FeaturedMovie = ({movie}) => {
         <Breadcrumbs 
           className="featured-genres-list"
           aria-label="breadcrumb"
-          separator={<FiberManualRecordIcon fontSize="small" color="white" />}
+          separator={
+            <FiberManualRecordIcon fontSize="small" 
+          />}
         >
           {movie.genres.map(genre => (
-            <p className="featured-genre">{genre}</p>
+            <p className="featured-genre" key={`featured-genre-${genre}`}>{genre}</p>
           ))}
         </Breadcrumbs>
       }
@@ -44,7 +46,7 @@ const FeaturedMovie = ({movie}) => {
             title="See Movie Details" aria-label="More"
           >
             <>
-             <InfoIcon className='icon' color="white" />
+             <InfoIcon className='icon' />
              <p className="more-text">More Info</p>
             </>
           </ToolTip>

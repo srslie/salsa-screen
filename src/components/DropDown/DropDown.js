@@ -5,7 +5,6 @@ import MenuItem from '@material-ui/core/Button';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import {Link} from 'react-router-dom';
 
 const StyledMenu = withStyles({
   paper: {
@@ -59,7 +58,6 @@ const DropDown = ({movies, showSearchResults, allGenres}) => {
         className="genre-button" 
         aria-controls="fade-menu" 
         aria-haspopup="true" 
-        color="white"
         onClick={handleClick}>
         Browse
         <ArrowDropDownIcon />
@@ -75,8 +73,10 @@ const DropDown = ({movies, showSearchResults, allGenres}) => {
       
         {allGenres.map(genre => {
           return (
-          <StyledMenuItem className={genre}
+          <StyledMenuItem 
+            className={genre}
             onClick={handleClose}
+            key={`menuItem-${genre}`}
           >
             {genre}
           </StyledMenuItem>
