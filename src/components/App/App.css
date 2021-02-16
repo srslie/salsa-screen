@@ -6,17 +6,9 @@
 
 main {
   display: grid;
+  /* grid-template-rows: 5vh auto 5vh; */
 }
 
-h1{
+h1 {
   font-size: 5vh;
-}
-
-button {
-  display: block;
-  border: none;
-  height: 70%;
-  width: 80%;
-  background-color: black;
-  color: white;
 }

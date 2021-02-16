@@ -6,23 +6,22 @@ import ToolTip from '@material-ui/core/Tooltip';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Error from '../Error/Error';
 
+
 const SelectedMovie = ({match, movies}) => {
   const movieId = match.url.split('/')[2]
   const movie = movies.find(movie => movie.id ===   parseInt(movieId))
 
   if (movie) {
     return (
-      <div className="selectedMovie" key={movie.id}>
+      <div className="selected-movie" key={movie.id}>
         <div className="banner" style={{ 
         backgroundImage: `url(${movie.backdrop_path})`
         }}>
           <div className="banner-info">
             <div className="banner-info-title">
             <Link to={`/`} className="exit" >
-              <ToolTip title="Exit Movie Details">
-                  <div aria-label="exit">
+              <ToolTip title="Exit Movie Details" aria-label="exit">
                     <CancelIcon />
-                  </div>
                 </ToolTip>
               </Link>
               <h1 className="title">{movie.title}</h1>
