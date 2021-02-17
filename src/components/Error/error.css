@@ -1,9 +1,13 @@
 .error {
   display: flex;
-  flex-direaction: column;
-  justify-content: center;
-  align-self: center;
+  flex-direction: column;
   top: 40vh;
   z-index: 100;
   padding-top: 40vh;
+  justify-self: center;
+}
+
+.error-icon {
+  color: red;
+  justify-self: center;
 }

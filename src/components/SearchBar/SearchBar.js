@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './searchBar.css';
-import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import Input from '@material-ui/core/Input';
+
 
 
 class SearchBar extends Component {
   constructor(props) {
     super();
     this.state = {
-      searchInput: ''
+      searchInput: '',
     }
   }
 
@@ -32,16 +33,19 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form className="search-bar" noValidate autoComplete="off">
-        <SearchIcon />
-        <TextField 
+      <form 
+        className="search-bar" 
+        noValidate 
+        autoComplete="off"
+      >
+        <SearchIcon className="search-icon" />
+        <Input 
           id="search-input" 
-          label="Title, overview..." 
-          variant="filled" 
-          className="search-input"
-          value={this.state.searchInput} 
+          className="search-input" 
           placeholder="Type to search..." 
           onChange={event => this.handleChange(event)} 
+          value={this.state.searchInput}  
+          aria-label='search input' 
         />
       </form>
     )
