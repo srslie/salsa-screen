@@ -1,6 +1,5 @@
 import React from 'react';
 import './footer.css';
-import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import GitHubIcon from '@material-ui/icons/GitHub';

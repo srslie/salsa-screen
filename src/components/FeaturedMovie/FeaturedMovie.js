@@ -1,7 +1,6 @@
 import React from 'react';
 import './FeaturedMovie.css'
 import ToolTip from '@material-ui/core/Tooltip';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import {Link} from 'react-router-dom';
@@ -15,7 +14,6 @@ const FeaturedMovie = ({movie}) => {
       <div className="featured-backdrop" style={{backgroundImage: `url(${movie.backdrop_path})`}}>
       </div> 
       <div className="featured-info" >
-        <div></div>
         <div className="featured-info-wrap">
         <h1 className="featured-title">
           {movie.title}
