@@ -6,7 +6,7 @@ But you never know if you'll like it until you try it—
 
 —until now.
 
-At [Salsa Screen](LINK HERE), experts have rated the hotness of your movies to display a salsa-rating that can steer you towards the savory experiences you desire and deserve.
+At [Salsa Screen](https://salsa-screen.herokuapp.com/), experts have rated the hotness of your movies to display a salsa-rating that can steer you towards the savory experiences you desire and deserve.
 
 Users can: 
 ![GIF OF USIBILITY](https://media.giphy.com/media/gyZyjcP0HeSG520TXt/giphy.gif)
