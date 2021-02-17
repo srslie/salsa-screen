@@ -1,16 +1,18 @@
-.menu-wrapper {
+/* .menu-wrapper {
   z-index: 1000;
   background-color: white;
   width: fit-content;
   height: 5vh;
-  padding-left: 2vw
+  padding-left: 2vw;
+  color: white;
 }
 
 .genre-button {
   color: white;
   z-index: 12;
+  background-color: white;
 }
 
 .genre-menu {
   color:white;
-}
+} */

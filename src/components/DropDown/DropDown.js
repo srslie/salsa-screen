@@ -7,9 +7,9 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 const StyledMenu = withStyles({
-  paper: {
-    border: '1px solid #d3d4d5',
-  },
+  root: {
+    
+  }
 })((props) => (
   <Menu
     elevation={0}
@@ -53,23 +53,26 @@ const DropDown = ({movies, showSearchResults, allGenres}) => {
   };
 
   return (
-     <div className="menu-wrapper">
+    <div className="menu-wrapper">
       <Button 
         className="genre-button" 
         aria-controls="fade-menu" 
         aria-haspopup="true" 
-        onClick={handleClick}>
+        onClick={handleClick}
+        style={{color: 'white'}}
+        >
         Browse
         <ArrowDropDownIcon />
       </Button>
 
-     <StyledMenu 
+      <StyledMenu 
         className="genre-menu"
         id="genre-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}>
+        onClose={handleClose}
+        >
       
         {allGenres.map(genre => {
           return (

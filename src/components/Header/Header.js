@@ -8,7 +8,7 @@ const Header = ({movies, showSearchResults, allGenres, showHome}) => {
   return (
     <>
     <header>
-      <Link to="/" onClick={showHome}> <img className="siteName" src="https://fontmeme.com/permalink/210212/496fe59db9e604cf780fe829057c5f87.png" alt="netflix-font" border="0" /></Link>
+      <Link to="/" onClick={showHome}> <img className="site-name" src="https://fontmeme.com/permalink/210212/496fe59db9e604cf780fe829057c5f87.png" alt="netflix-font" border="0" /></Link>
       {/*font image from: https://fontmeme.com/netflix-font/ */}
   
       {movies &&
