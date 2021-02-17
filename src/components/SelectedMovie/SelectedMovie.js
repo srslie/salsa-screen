@@ -38,7 +38,7 @@ const SelectedMovie = ({match, movies}) => {
           </div>
         </div>
 
-        <div className="info">
+        <div className="selected-info">
           {movie.overview &&
             <div className="overview-wrapper">
               <h3 className="overview">Overview:</h3> 
@@ -75,7 +75,7 @@ const SelectedMovie = ({match, movies}) => {
         {movie.videos && movie.videos.length &&
           <div className="trailers">
             <h3>Trailers & More:</h3>
-              <div className="videosList">
+              <div className="videos-list">
                 {movie.videos.map(video => Trailer(video.key))
               }
               </div>  

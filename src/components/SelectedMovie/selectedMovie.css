@@ -93,13 +93,13 @@
   padding-right: 5vh;
 }
 
-.videosList {
+.videos-list {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-gap: 1vh;
 }
 
-.info {
+.selected-info {
   display: grid;
   grid-template-columns: 60% 30%;
   grid-column-gap: 10%;
