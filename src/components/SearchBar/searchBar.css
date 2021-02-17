@@ -10,14 +10,15 @@
 
 .search-input {
   background-color: white;
-  opacity: 30%;
-  height: 5vh;
+  opacity: 0%;
+  height: 4.5vh;
   width: 100%;
   padding-left: 2vw;
+  border-radius: 4%
 }
 
 .search-input:focus-within {
-  border: 2px solid red;
+  border: 3px solid red;
   opacity: 80%;
 }
 
