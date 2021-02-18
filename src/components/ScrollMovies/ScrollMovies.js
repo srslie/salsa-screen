@@ -1,6 +1,5 @@
 import React from 'react';
 import './ScrollMovies.css';
-import Card from '../Card/Card';
 import FeaturedMovie from '../FeaturedMovie/FeaturedMovie'
 import ScrollSection from '../ScrollSection/ScrollSection';
 
@@ -17,7 +16,7 @@ const ScrollMovies = ({movies, allGenres}) => {
     <div className="movies-genres">
       {allGenres.map(genre => {
       return (
-       <ScrollSection 
+        <ScrollSection 
           movies={movies}
           allGenres={allGenres}
           genre={genre}
