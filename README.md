@@ -9,7 +9,10 @@ But you never know if you'll like it until you try it—
 At [Salsa Screen](https://salsa-screen.herokuapp.com/), experts have rated the hotness of your movies to display a salsa-rating that can steer you towards the savory experiences you desire and deserve.
 
 Users can: 
-![GIF OF USIBILITY](https://media.giphy.com/media/gyZyjcP0HeSG520TXt/giphy.gif)
+![GIF](https://i.giphy.com/media/gyZyjcP0HeSG520TXt/giphy.gif)
+
+https://media.giphy.com/media/gyZyjcP0HeSG520TXt/giphy.gif
+
 - See a display of movies
 - Click a movie to view only that movie and its details
 - Be able to return to the home view of all movies
